@@ -34,6 +34,11 @@ dockerRun {
     ))
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+tasks {
+    named("dockerRun") {
+        dependsOn("docker")
+    }
+    withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "1.8"
+    }
 }
